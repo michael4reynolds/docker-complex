@@ -21,3 +21,15 @@ after_success:
   - docker push michael4reynolds/multi-server
   - docker push michael4reynolds/multi-worker
   
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: docker-complex
+  env: DockerComplex-env
+  bucket_name: elasticbeanstalk-us-east-2-967042647185
+  bucket_path: docker-complex
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
